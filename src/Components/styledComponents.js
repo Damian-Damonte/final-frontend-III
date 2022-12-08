@@ -1,34 +1,48 @@
 import styled from "styled-components";
 
 export const MainContainer = styled.div`
-  min-height: 100vh ;
-  background-color: ${({theme}) => theme.bgc};
-  /* display: flex;
-  flex-direction: column; */
-  position: relative;
-`
+  min-height: 100vh;
+  background-color: ${({ theme }) => theme.bgc};
+
+  .active > button {
+    color: ${({ theme }) => theme.details};
+    font-weight: bold;
+  }
+`;
 
 export const FooterStyled = styled.footer`
   display: flex;
   align-items: center;
   justify-content: space-around;
   margin-top: 50px;
-  background-color: ${({theme}) => theme.bgcLayout};
+  background-color: ${({ theme }) => theme.bgcLayout};
   svg {
-    color:${({theme}) => theme.text};
+    color: ${({ theme }) => theme.text};
+    &:hover{
+      color: #aaa
+    }
   }
   img {
     background-color: #fff;
+    width: 180px;
+    margin: 0;
+    @media (max-width: 350px) {
+      width: 120px;
+    }
   }
+
 `;
 export const IcontContainer = styled.div`
   display: flex;
   gap: 20px;
+  @media (max-width: 350px) {
+      gap:5px
+    }
 `;
 
 export const H1Section = styled.h1`
-  color: ${({theme}) => theme.text};
-`
+  color: ${({ theme }) => theme.text};
+`;
 
 export const CardContainer = styled.div`
   display: flex;
@@ -48,13 +62,13 @@ export const DentistCard = styled.div`
   width: 200px;
   height: 340px;
   padding: 0.5rem;
-  border: 0.5px solid ${({theme}) => theme.details};
-  background-color: ${({theme}) => theme.bgcCard};
+  border: 0.5px solid ${({ theme }) => theme.details};
+  background-color: ${({ theme }) => theme.bgcCard};
   a {
-    color: ${({theme}) => theme.text}
+    color: ${({ theme }) => theme.text};
   }
   p {
-    color: ${({theme}) => theme.text}
+    color: ${({ theme }) => theme.text};
   }
 `;
 
@@ -127,6 +141,9 @@ export const ThField = styled.th`
   background-color: #8dcdf7;
   font-size: 1.2rem;
   text-transform: capitalize;
+  @media (max-width: 350px) {
+      padding: 0px;
+    }
 `;
 
 export const ThValue = styled.th`
@@ -136,6 +153,11 @@ export const ThValue = styled.th`
   font-weight: normal;
   background-color: #cfe7fa;
   font-size: 1.2rem;
+  @media (max-width: 350px) {
+      padding: 5px;
+  font-size: 1rem;
+
+    }
 `;
 
 export const ContactContainer = styled.div`
@@ -148,6 +170,10 @@ export const ContactContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  @media (max-width: 350px) {
+      width: 100%;
+      padding: 30px 10px;
+    }
 `;
 
 export const ContacTitle = styled.h1`
@@ -171,13 +197,16 @@ export const ContactForm = styled.form`
   gap: 20px;
   width: 100%;
   max-width: 500px;
+  @media (max-width: 350px) {
+      padding: 30px 0px;
+    }
 `;
 
 export const InputContainer = styled.div`
   width: 90%;
   padding: 0;
   margin: 0;
-`
+`;
 
 export const ContactInput = styled.input`
   font-size: 1.2rem;
@@ -205,4 +234,4 @@ export const BtnSubmit = styled.button`
 export const ErrorMsg = styled.p`
   margin: 0;
   color: #d90000;
-`
+`;

@@ -7,7 +7,7 @@ import { ContactContainer, ContacTitle, ContacSubtitle } from '../Components/sty
 const Contact = () => {
   return (
     <ContactContainer>
-      <ContacTitle style={{margin:"0"}}>Want to know more?</ContacTitle>
+      <ContacTitle >Want to know more?</ContacTitle>
       <ContacSubtitle>Send us your questions and we will contact you</ContacSubtitle>
       <Form/>
     </ContactContainer>

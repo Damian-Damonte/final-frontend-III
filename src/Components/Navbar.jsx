@@ -1,5 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
-import PropTypes from "prop-types";
+import React, { useState, useContext } from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Divider from "@mui/material/Divider";
@@ -13,39 +12,32 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
-import { routes } from "../Routes/routes";
 import { NavLink } from "react-router-dom";
 import BtnChangeTheme from "./BtnChangeTheme";
 import { createTheme } from '@mui/material/styles';
-import { ContextGlobal } from "./utils/global.context"
-import { lightTheme, darkTheme} from "./utils/themes.js"
+import { ContextTheme } from "../contexts/theme.context"
 
 const drawerWidth = 240;
 
 function DrawerAppBar(props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [currentTheme, setCurrentTheme] = useState(lightTheme)
 
-  const context = useContext(ContextGlobal);
-  useEffect(() => {
-    setCurrentTheme(context.theme === "lightTheme" ? lightTheme : darkTheme);
-  }, [context]);
-
+  const {theme}  = useContext(ContextTheme);
+  
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
 
-  const theme = createTheme({
+  const themeMUI = createTheme({
     palette: {
       primary: {
-        main: currentTheme.bgcLayout,
-      },
-      secondary: {
-        main: "#09192f",
-      },
+        main: theme.bgcLayout,
+      }
     },
   });
+
+  const navLinkRoutes = ["home", "contact", "favs"];
 
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
@@ -55,16 +47,19 @@ function DrawerAppBar(props) {
         </span>
       </Typography>
       <Divider />
+
       <List>
-        {routes.map((item) => (
-          <NavLink key={item.title} to={item.path}>
-            <ListItem key={item.title} disablePadding>
+        {navLinkRoutes.map((item) => (
+          <NavLink key={item} to={`/${item}`}>
+            <ListItem disablePadding>
               <ListItemButton sx={{ textAlign: "center" }}>
-                <ListItemText primary={item.title} />
+                <ListItemText primary={item.toUpperCase()} />
               </ListItemButton>
             </ListItem>
           </NavLink>
         ))}
+      <BtnChangeTheme />
+
       </List>
     </Box>
   );
@@ -74,7 +69,7 @@ function DrawerAppBar(props) {
 
   return (
     <Box sx={{ display: "flex", marginBottom: "20px" }}>
-      <AppBar component="nav" color="primary" theme={theme}>
+      <AppBar component="nav" color="primary" theme={themeMUI}>
         <div>
           <Toolbar>
             <IconButton
@@ -96,10 +91,10 @@ function DrawerAppBar(props) {
               </span>
             </Typography>
             <Box sx={{ display: { xs: "none", sm: "block" } }}>
-              {routes.map((item) => (
-                <NavLink key={item.title} to={item.path} >
-                  <Button sx={{ color: currentTheme.text }}>
-                    {item.title}
+              {navLinkRoutes.map((item) => (
+                <NavLink key={item} to={`/${item}`} >
+                  <Button sx={{ color: theme.text }}>
+                    {item}
                   </Button>
                 </NavLink>
               ))}
@@ -125,11 +120,15 @@ function DrawerAppBar(props) {
             },
           }}
         >
+
           {drawer}
+        {/* <button>change</button> */}
         </Drawer>
 
       </Box>
+
       <Box component="main" sx={{ p: 3 }} />
+
     </Box>
   );
 }

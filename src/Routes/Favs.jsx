@@ -1,35 +1,35 @@
-import React, { useState, useEffect } from "react";
-import Card from "../Components/Card";
+import React, { useContext } from "react";
 import { BtnRemoveAll, FavContainer, PFavs, CardContainer, H1Section } from "../Components/styledComponents";
+import { DentistsContext } from "../contexts/dentists.contexts";
+import Card from "../Components/Card";
 
 //Este componente debera ser estilado como "dark" o "light" dependiendo del theme del Context
+// este componente debe consumir los destacados del localStorage
+// Deberan renderizar una Card por cada uno de ellos
 
 const Favs = () => {
-  const [favs, setFavs] = useState(JSON.parse(localStorage.favs));
-
-  const removeAll = () => {
-    localStorage.favs = JSON.stringify([]);
-    setFavs([]);
-  }
-
-  const prueba =(id) => {
-    const updateFavs = favs.filter(person => person.id !== id );
-    setFavs(updateFavs);
-    localStorage.favs = JSON.stringify(updateFavs);
-  };
+  const { dentists: { favs }, dispatch } = useContext(DentistsContext);
 
   return (
     <FavContainer>
       <H1Section>Dentists Favs</H1Section>
       <CardContainer>
-        {/* este componente debe consumir los destacados del localStorage */}
-        {/* Deberan renderizar una Card por cada uno de ellos */}
-
-        {favs.map((doc) => (
-            <Card key={doc.id} {...doc} prueba={prueba} />
+        {favs.map((dentist) => (
+          <Card
+            key={dentist.id}
+            dentist={dentist}
+            dispatch={dispatch}
+            isFav={true}
+          />
         ))}
       </CardContainer>
-      {favs.length ?  <BtnRemoveAll onClick={removeAll}>Remove all</BtnRemoveAll> : <PFavs>No favorite dentists</PFavs>}
+      {favs.length ? (
+        <BtnRemoveAll onClick={() => dispatch({ type: "removeAll" })}>
+          Remove all
+        </BtnRemoveAll>
+      ) : (
+        <PFavs>No favorite dentists</PFavs>
+      )}
     </FavContainer>
   );
 };

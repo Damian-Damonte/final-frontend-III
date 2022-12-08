@@ -5,10 +5,11 @@ import { TableDetails, ThField, ThValue , Tr, H1Section } from "../Components/st
 
 //Este componente debera ser estilado como "dark" o "light" dependiendo del theme del Context
 
+// Consumiendo el parametro dinamico de la URL deberan hacer un fetch a un user en especifico
+// aqui deberan renderizar la informacion en detalle de un user en especifico
+// Deberan mostrar el name - email - phone - website por cada user en especifico
 const Detail = () => {
-  // Consumiendo el parametro dinamico de la URL deberan hacer un fetch a un user en especifico
   const [dataDentis, setDataDentis] = useState({});
-
   const { id } = useParams();
 
   useEffect(() => {
@@ -21,9 +22,6 @@ const Detail = () => {
   return (
     <>
       <H1Section>Detail Dentist { id } </H1Section>
-      {/* aqui deberan renderizar la informacion en detalle de un user en especifico */}
-      {/* Deberan mostrar el name - email - phone - website por cada user en especifico */}
-
       <TableDetails>
         <tbody>
           {fields.map(field => (
