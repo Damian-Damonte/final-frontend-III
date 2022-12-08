@@ -3,6 +3,8 @@ import styled from "styled-components";
 export const MainContainer = styled.div`
   min-height: 100vh;
   background-color: ${({ theme }) => theme.bgc};
+  position: relative;
+  padding-bottom: 70px;
 
   .active > button {
     color: ${({ theme }) => theme.details};
@@ -16,6 +18,10 @@ export const FooterStyled = styled.footer`
   justify-content: space-around;
   margin-top: 50px;
   background-color: ${({ theme }) => theme.bgcLayout};
+  height: 40px;
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
   svg {
     color: ${({ theme }) => theme.text};
     &:hover{
@@ -52,6 +58,12 @@ export const CardContainer = styled.div`
   height: auto;
   flex-wrap: wrap;
   margin: 20px auto 0 auto;
+
+  a{
+    &:hover{
+      color: ${({ theme }) => theme.hoverLink};
+    }
+  }
 `;
 
 export const DentistCard = styled.div`
@@ -161,7 +173,7 @@ export const ThValue = styled.th`
 `;
 
 export const ContactContainer = styled.div`
-  margin: 50px auto;
+  margin: 50px auto 0px auto;
   width: 80%;
   border-radius: 5px;
   padding: 40px;
@@ -170,8 +182,8 @@ export const ContactContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  @media (max-width: 350px) {
-      width: 100%;
+  @media (max-width: 450px) {
+      width: 95%;
       padding: 30px 10px;
     }
 `;
@@ -197,7 +209,7 @@ export const ContactForm = styled.form`
   gap: 20px;
   width: 100%;
   max-width: 500px;
-  @media (max-width: 350px) {
+  @media (max-width: 450px) {
       padding: 30px 0px;
     }
 `;

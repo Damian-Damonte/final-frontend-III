@@ -12,9 +12,12 @@ const Footer = () => {
     { id: 3, link: "https://web.whatsapp.com/", icon: <WhatsAppIcon /> },
   ];
 
+
   return (
     <FooterStyled>
+    <a target="_blank" href={"https://www.digitalhouse.com/ar"} rel="noreferrer">
       <img src={logo} alt="DH-logo" />
+    </a>
       <IcontContainer>
         {social.map(social => (
           <a key={social.id} target="_blank" href={social.link} rel="noreferrer">

@@ -5,6 +5,7 @@ import DrawerAppBar from './Navbar';
 import { MainContainer } from './styledComponents';
 
 const Layout = () => {
+
   return (
     <MainContainer >
       <DrawerAppBar/>

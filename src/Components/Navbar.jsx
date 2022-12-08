@@ -40,10 +40,10 @@ function DrawerAppBar(props) {
   const navLinkRoutes = ["home", "contact", "favs"];
 
   const drawer = (
-    <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
+    <Box onClick={handleDrawerToggle} sx={{ textAlign: "center", backgroundColor:theme.bgcCard, height: "100vh"  }}>
       <Typography variant="h6" sx={{ my: 2 }}>
-        <span>
-          <span style={{ color: "red" }}>D</span>H Odonto
+        <span style={{color:theme.text}}>
+          <span style={{ color: theme.details }}>D</span>H Odonto
         </span>
       </Typography>
       <Divider />
@@ -52,14 +52,13 @@ function DrawerAppBar(props) {
         {navLinkRoutes.map((item) => (
           <NavLink key={item} to={`/${item}`}>
             <ListItem disablePadding>
-              <ListItemButton sx={{ textAlign: "center" }}>
+              <ListItemButton sx={{ textAlign: "center", color:theme.text }}>
                 <ListItemText primary={item.toUpperCase()} />
               </ListItemButton>
             </ListItem>
           </NavLink>
         ))}
       <BtnChangeTheme />
-
       </List>
     </Box>
   );
@@ -68,7 +67,7 @@ function DrawerAppBar(props) {
     window !== undefined ? () => window().document.body : undefined;
 
   return (
-    <Box sx={{ display: "flex", marginBottom: "20px" }}>
+    <Box sx={{ display: "flex", marginBottom: "20px"}}>
       <AppBar component="nav" color="primary" theme={themeMUI}>
         <div>
           <Toolbar>
@@ -87,7 +86,7 @@ function DrawerAppBar(props) {
               sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
             >
               <span>
-                <span style={{ color: "red" }}>D</span>H Odonto
+                <span style={{ color: theme.details }}>D</span>H Odonto
               </span>
             </Typography>
             <Box sx={{ display: { xs: "none", sm: "block" } }}>
@@ -120,9 +119,7 @@ function DrawerAppBar(props) {
             },
           }}
         >
-
           {drawer}
-        {/* <button>change</button> */}
         </Drawer>
 
       </Box>

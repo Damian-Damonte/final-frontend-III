@@ -3,7 +3,6 @@ import { styled } from '@mui/material/styles';
 import Switch from '@mui/material/Switch';
 import { ContextTheme } from '../contexts/theme.context';
 
-
 const MaterialUISwitch = styled(Switch)(({ theme }) => ({
   width: 62,
   height: 34,
