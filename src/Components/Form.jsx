@@ -12,7 +12,6 @@ import { validations } from "./utils/formValidations"
 const initialForm = { name: "", email: "" };
 
 const Form = () => {
-  //Aqui deberan implementar el form completo con sus validaciones
 
   const [form, setForm] = useState(initialForm);
   const [errors, setErrors] = useState(initialForm);
@@ -35,7 +34,6 @@ const Form = () => {
 
   return (
     <ContactForm onSubmit={handleSubmit}>
-
       <InputContainer>
         <ContactInput
           placeholder="Full name"

@@ -52,13 +52,12 @@ const MaterialUISwitch = styled(Switch)(({ theme }) => ({
 
 const BtnTheme = () => {
   const { theme, dispatch } = useContext(ContextTheme);
-
   const handleTheme = () => {
     theme.name === "lightTheme" ? dispatch({type:"darkTheme"}) : dispatch({type: "lightTheme"})
   }
 
   return (
-    <MaterialUISwitch sx={{ m: 1 }}  onClick={ handleTheme } />
+    <MaterialUISwitch sx={{ m: 1 }}  onClick={ handleTheme } checked={theme.name === "darkTheme"}/>
   );
 }
 

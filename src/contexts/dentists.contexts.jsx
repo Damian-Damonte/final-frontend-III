@@ -1,13 +1,15 @@
-import { createContext, useReducer, useEffect} from "react";
-import axios from "axios";
+import { createContext, useReducer } from "react";
 import { Outlet } from "react-router-dom";
 
 export const DentistsContext = createContext(null);
 
 const reducer = (state, action) => {
   switch (action.type) {
-    case "setData":
+    case "setAllDentistsAndFavs":
       return action.payload;
+
+    case "setFavs":
+      return {...state, favs: action.payload};
 
     case "handleFav":
       const newStorage = action.payload.isFav
@@ -27,18 +29,6 @@ const reducer = (state, action) => {
 
 const DentistsContextProvider = () => {
   const [dentists, dispatch] = useReducer(reducer, {allDentists: [], favs: []});
-
-  useEffect(() => {
-    axios.get("https://jsonplaceholder.typicode.com/users").then( data => {
-      dispatch({
-        type: "setData",
-        payload: {
-          allDentists: data.data,
-          favs: localStorage.favs ? JSON.parse(localStorage.favs) : [],
-        },
-      });
-    });
-  }, []);
 
   return (
     <DentistsContext.Provider value={{dentists, dispatch}}>

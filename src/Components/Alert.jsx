@@ -32,7 +32,7 @@ export default function TransitionAlerts({name, setSendForm}) {
           }
           sx={{ mb: 2 }}
         >
-          Gracias {name}, te contactaremos cuando antes vía mail
+          Thank you {name}, we will contact you as soon as possible via email
         </Alert>
       </Collapse>
     </Box>

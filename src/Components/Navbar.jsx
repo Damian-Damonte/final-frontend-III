@@ -17,7 +17,7 @@ import BtnChangeTheme from "./BtnChangeTheme";
 import { createTheme } from '@mui/material/styles';
 import { ContextTheme } from "../contexts/theme.context"
 
-const drawerWidth = 240;
+const drawerWidth = 220;
 
 function DrawerAppBar(props) {
   const { window } = props;
@@ -121,11 +121,8 @@ function DrawerAppBar(props) {
         >
           {drawer}
         </Drawer>
-
       </Box>
-
       <Box component="main" sx={{ p: 3 }} />
-
     </Box>
   );
 }

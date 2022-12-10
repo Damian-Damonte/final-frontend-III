@@ -4,17 +4,17 @@ export const validations = (form) => {
   let regexEmail = /^(\w+[/./-]?){1,}@[a-z]+[/.]\w{2,}$/;
 
   if (!form.name) {
-    errors.name = "El campo name no puede estár vacio";
+    errors.name = "This field can not be empty";
   } else if (form.name.length < 5){
-    errors.name = "Este campo debe contener al menos 5 caracteres";
+    errors.name = "This field must contain at least 5 characters";
   } else if (!regexName.test(form.name)) {
-    errors.name = "Este campo solo acepta letras y espacios en blanco";
+    errors.name = "This field only accepts letters and blank spaces";
   }
 
   if (!form.email) {
-    errors.email = "El campo email no puede estár vacio";
+    errors.email = "This field can not be empty";
   } else if (!regexEmail.test(form.email)) {
-    errors.email = "Formato de email incorrecto";
+    errors.email = "Incorrect email format";
   }
 
   return errors;

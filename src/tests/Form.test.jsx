@@ -6,7 +6,7 @@ import Form from "../Components/Form";
 
 describe("Tests component Form", () => {
 
-  test("Envio correcto del formulario", () => {
+  test("Envio correcto del formulario con nombre correspondiente", () => {
     const mockData = { name: "Rodrigo", email: "rodrigofernandez@gmail.com" };
 
     render(<Form />);
@@ -20,7 +20,7 @@ describe("Tests component Form", () => {
     fireEvent.click(btnSubmit);
 
     const alert = screen.getByText(
-      `Gracias ${mockData.name}, te contactaremos cuando antes vía mail`
+      `Thank you ${mockData.name}, we will contact you as soon as possible via email`
     );
 
     expect(alert).toBeInTheDocument();
@@ -39,8 +39,8 @@ describe("Tests component Form", () => {
     userEvent.type(inputEmail, mockData.email);
     fireEvent.click(btnSubmit);
 
-    const validacionName = screen.getByText("Este campo solo acepta letras y espacios en blanco");
-    const validacionEmail = screen.getByText("Formato de email incorrecto");
+    const validacionName = screen.getByText("This field only accepts letters and blank spaces");
+    const validacionEmail = screen.getByText("Incorrect email format");
 
     expect(validacionName).toBeInTheDocument();
     expect(validacionEmail).toBeInTheDocument();
@@ -59,8 +59,8 @@ describe("Tests component Form", () => {
     userEvent.type(inputEmail, mockData.email);
     fireEvent.click(btnSubmit);
 
-    const validacionName = screen.getByText("Este campo debe contener al menos 5 caracteres");
-    const validacionEmail = screen.getByText("El campo email no puede estár vacio");
+    const validacionName = screen.getByText("This field must contain at least 5 characters");
+    const validacionEmail = screen.getByText("This field can not be empty");
 
     expect(validacionName).toBeInTheDocument();
     expect(validacionEmail).toBeInTheDocument();

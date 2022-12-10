@@ -6,6 +6,7 @@ import Contact from "./Routes/Contact";
 import Favs from "./Routes/Favs";
 import Details from "./Routes/Detail";
 import DentistsContextProvider from "./contexts/dentists.contexts";
+import NotFound from "./Routes/NotFound";
 
 function App() {
   return (
@@ -19,7 +20,7 @@ function App() {
         </Route>
         <Route path="/details/:id" element={<Details />} />
       </Route>
-      <Route path="*" element={<h1>Not found</h1>} />
+      <Route path="*" element={<NotFound />} />
     </Routes>
   );
 }

@@ -1,13 +1,8 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
-import { TableDetails, ThField, ThValue , Tr, H1Section } from "../Components/styledComponents.js"
+import { TableDetails, ThField, ThValue , Tr, H1Section, DetailContainer } from "../Components/styledComponents.js"
 
-//Este componente debera ser estilado como "dark" o "light" dependiendo del theme del Context
-
-// Consumiendo el parametro dinamico de la URL deberan hacer un fetch a un user en especifico
-// aqui deberan renderizar la informacion en detalle de un user en especifico
-// Deberan mostrar el name - email - phone - website por cada user en especifico
 const Detail = () => {
   const [dataDentis, setDataDentis] = useState({});
   const { id } = useParams();
@@ -20,9 +15,9 @@ const Detail = () => {
   const fields = ["name", "email", "phone", "website"];
 
   return (
-    <>
+    <DetailContainer>
       <H1Section>Detail Dentist { id } </H1Section>
-      <TableDetails>
+        <TableDetails>
         <tbody>
           {fields.map(field => (
             <Tr key={field}>
@@ -32,7 +27,7 @@ const Detail = () => {
           ))}
         </tbody>
       </TableDetails>
-    </>
+    </DetailContainer>
   )
 }
 

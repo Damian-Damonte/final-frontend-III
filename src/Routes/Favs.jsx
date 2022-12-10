@@ -1,14 +1,16 @@
-import React, { useContext } from "react";
-import { BtnRemoveAll, FavContainer, PFavs, CardContainer, H1Section } from "../Components/styledComponents";
+import React, { useContext, useEffect } from "react";
+import { BtnRemoveAll, FavContainer, PFavs, CardContainer, H1Section} from "../Components/styledComponents";
 import { DentistsContext } from "../contexts/dentists.contexts";
 import Card from "../Components/Card";
 
-//Este componente debera ser estilado como "dark" o "light" dependiendo del theme del Context
-// este componente debe consumir los destacados del localStorage
-// Deberan renderizar una Card por cada uno de ellos
-
 const Favs = () => {
   const { dentists: { favs }, dispatch } = useContext(DentistsContext);
+
+  useEffect(() => {
+    dispatch({
+      type:"setFavs",
+      payload: localStorage.favs ? JSON.parse(localStorage.favs) : []})
+  }, [dispatch]);
 
   return (
     <FavContainer>

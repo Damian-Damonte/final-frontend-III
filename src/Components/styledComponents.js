@@ -1,4 +1,33 @@
-import styled from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
+
+const GlobalStyle = createGlobalStyle`
+  *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+      "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+      sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+      monospace;
+  }
+  
+  a{
+      color: #000;
+      text-decoration: none;
+      margin: 5px;
+      cursor: pointer;
+    }
+`;
+export default GlobalStyle;
 
 export const MainContainer = styled.div`
   min-height: 100vh;
@@ -24,8 +53,8 @@ export const FooterStyled = styled.footer`
   width: 100%;
   svg {
     color: ${({ theme }) => theme.text};
-    &:hover{
-      color: #aaa
+    &:hover {
+      color: #aaa;
     }
   }
   img {
@@ -36,17 +65,17 @@ export const FooterStyled = styled.footer`
       width: 120px;
     }
   }
-
 `;
 export const IcontContainer = styled.div`
   display: flex;
   gap: 20px;
   @media (max-width: 350px) {
-      gap:5px
-    }
+    gap: 5px;
+  }
 `;
 
 export const H1Section = styled.h1`
+  text-align: center;
   color: ${({ theme }) => theme.text};
 `;
 
@@ -59,8 +88,8 @@ export const CardContainer = styled.div`
   flex-wrap: wrap;
   margin: 20px auto 0 auto;
 
-  a{
-    &:hover{
+  a {
+    &:hover {
       color: ${({ theme }) => theme.hoverLink};
     }
   }
@@ -133,6 +162,13 @@ export const PFavs = styled.p`
   text-align: center;
 `;
 
+export const DetailContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+
 export const TableDetails = styled.table`
   max-width: 800px;
   margin: auto;
@@ -154,8 +190,8 @@ export const ThField = styled.th`
   font-size: 1.2rem;
   text-transform: capitalize;
   @media (max-width: 350px) {
-      padding: 0px;
-    }
+    padding: 0px;
+  }
 `;
 
 export const ThValue = styled.th`
@@ -166,10 +202,9 @@ export const ThValue = styled.th`
   background-color: #cfe7fa;
   font-size: 1.2rem;
   @media (max-width: 350px) {
-      padding: 5px;
-  font-size: 1rem;
-
-    }
+    padding: 5px;
+    font-size: 1rem;
+  }
 `;
 
 export const ContactContainer = styled.div`
@@ -183,9 +218,9 @@ export const ContactContainer = styled.div`
   justify-content: center;
   align-items: center;
   @media (max-width: 450px) {
-      width: 95%;
-      padding: 30px 10px;
-    }
+    width: 95%;
+    padding: 30px 10px;
+  }
 `;
 
 export const ContacTitle = styled.h1`
@@ -210,8 +245,8 @@ export const ContactForm = styled.form`
   width: 100%;
   max-width: 500px;
   @media (max-width: 450px) {
-      padding: 30px 0px;
-    }
+    padding: 30px 0px;
+  }
 `;
 
 export const InputContainer = styled.div`
@@ -246,4 +281,55 @@ export const BtnSubmit = styled.button`
 export const ErrorMsg = styled.p`
   margin: 0;
   color: #d90000;
+`;
+
+export const ContainerNotFound = styled.div`
+  background-color: #cfe7fa;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+`;
+export const ErrorContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: sans-serif;
+  background-color: #98cffa;
+  padding: 30px;
+  border-radius: 5px;
+  @media (max-width: 450px) {
+    padding: 10px;
+  }
+
+  h1 {
+    font-size: 160px;
+    @media (max-width: 450px) {
+      font-size: 100px;
+    }
+  }
+  h2 {
+    font-size: 50px;
+    text-align: center;
+    @media (max-width: 450px) {
+      font-size: 30px;
+    }
+  }
+  a {
+    background-color: rgb(0, 89, 173);
+    color: white;
+    font-size: 20px;
+    padding: 15px 30px;
+    margin-top: 60px;
+    border-radius: 5px;
+    text-align: center;
+    &:hover {
+      background-color: rgb(0, 114, 221);
+    }
+    @media (max-width: 450px) {
+      font-size: 20px;
+    }
+  }
 `;
